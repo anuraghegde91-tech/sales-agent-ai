@@ -1,0 +1,215 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Sales Agent Dark Theme Colors */
+  --sa-bg-primary: #0D1117;
+  --sa-bg-secondary: #161B22;
+  --sa-bg-card: #1C2128;
+  --sa-bg-elevated: #21262D;
+  
+  --sa-border: #30363D;
+  
+  --sa-text-primary: #E6EDF3;
+  --sa-text-secondary: #8B949E;
+  --sa-text-muted: #484F58;
+  
+  --sa-accent-blue: #58A6FF;
+  --sa-accent-teal: #39D0B4;
+  --sa-accent-green: #3FB950;
+  --sa-accent-amber: #D29922;
+  --sa-accent-red: #F85149;
+  
+  --sa-whatsapp-bg: #ECE5DD;
+  --sa-whatsapp-header: #1A4A3A;
+  --sa-whatsapp-green: #25D366;
+  
+  /* Shadcn overrides */
+  --background: #0D1117;
+  --foreground: #E6EDF3;
+  --card: #1C2128;
+  --card-foreground: #E6EDF3;
+  --popover: #1C2128;
+  --popover-foreground: #E6EDF3;
+  --primary: #58A6FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #21262D;
+  --secondary-foreground: #E6EDF3;
+  --muted: #161B22;
+  --muted-foreground: #8B949E;
+  --accent: #21262D;
+  --accent-foreground: #E6EDF3;
+  --destructive: #F85149;
+  --destructive-foreground: #FFFFFF;
+  --border: #30363D;
+  --input: #161B22;
+  --ring: #58A6FF;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* WhatsApp pattern background */
+.whatsapp-pattern {
+  background-color: #ECE5DD;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D5CEC5' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Animations */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin-loader {
+  to { transform: rotate(360deg); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+.animate-spin-loader {
+  animation: spin-loader 1s linear infinite;
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 80%; }
+}
+
+.animate-progress {
+  animation: progress-fill 3s ease-out forwards;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.9;
+}
+
+/* ── Auth page animations ──────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(var(--float-rotate, 0deg)); }
+  50%       { transform: translateY(-14px) rotate(var(--float-rotate, 0deg)); }
+}
+
+@keyframes float-alt {
+  0%, 100% { transform: translateY(0px) rotate(var(--float-rotate, 0deg)); }
+  50%       { transform: translateY(10px) rotate(var(--float-rotate, 0deg)); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes glow-blue {
+  0%, 100% { box-shadow: 0 0 20px rgba(88,166,255,0.15); }
+  50%       { box-shadow: 0 0 40px rgba(88,166,255,0.35); }
+}
+
+@keyframes glow-green {
+  0%, 100% { box-shadow: 0 0 20px rgba(63,185,80,0.15); }
+  50%       { box-shadow: 0 0 40px rgba(63,185,80,0.35); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to   { transform: rotate(-360deg) translateX(60px) rotate(360deg); }
+}
+
+.animate-float          { animation: float 4s ease-in-out infinite; }
+.animate-float-alt      { animation: float-alt 5s ease-in-out infinite; }
+.animate-float-slow     { animation: float 6s ease-in-out infinite; }
+.animate-fade-in-up     { animation: fade-in-up 0.6s ease-out both; }
+.animate-fade-in        { animation: fade-in 0.5s ease-out both; }
+.animate-glow-blue      { animation: glow-blue 3s ease-in-out infinite; }
+.animate-glow-green     { animation: glow-green 3s ease-in-out infinite; }
+
+/* ── Custom scrollbars ─────────────────────────────────────── */
+
+/* Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #30363D;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #484F58;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #58A6FF;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #30363D transparent;
+}
